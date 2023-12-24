@@ -1,0 +1,36 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: spring-cloud-gateway-server
+  cloud:
+    gateway:
+      routes:
+        - id: employeeModule
+          uri: http://localhost:9091/
+          predicates:
+            - Path=/employee/**
+#        - id: consumerModule
+#          uri: http://localhost:8082/
+#          predicates:
+#            - Path=/consumer/**
+
+#eureka:
+#  client:
+#    service-url:
+#      default-zone: http://localhost:8761/eureka
+
+
+#eureka.client.register-with-eureka=true
+#eureka.client.fetch-registry=true
+#to search other service by name
+#spring.cloud.gateway.discovery.locator.enabled=true
+#spring.cloud.gateway.discovery.locator.lower-case-service-id=true
+#
+#spring.cloud.gateway.routes[0].id=currency
+#spring.cloud.gateway.routes[0].uri=lb://CURRENCY-EXCHANGE-SERVICE
+#spring.cloud.gateway.routes[0].predicates[0]=Path=/currency-exchange/**
+##spring.cloud.gateway.routes[1].id=inMateService
+##spring.cloud.gateway.routes[1].uri=http://localhost:2006/
+##spring.cloud.gateway.routes[1].predicates[0]=Path=/consumer/**
