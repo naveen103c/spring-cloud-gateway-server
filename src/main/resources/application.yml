@@ -3,23 +3,27 @@ server:
 
 spring:
   application:
-    name: spring-cloud-gateway-server
+    name: SPRING-CLOUD-GATEWAY-SERVER
   cloud:
     gateway:
       routes:
-        - id: employeeModule
-          uri: http://localhost:9091/
+        - id: CURRENCY-CONVERSION-SERVICE
+          uri: lb://CURRENCY-CONVERSION-SERVICE
           predicates:
-            - Path=/employee/**
-#        - id: consumerModule
-#          uri: http://localhost:8082/
-#          predicates:
-#            - Path=/consumer/**
+            - Path=/currency-conversion/**
+        - id: CURRENCY-EXCHANGE-SERVICE
+          uri: lb://CURRENCY-EXCHANGE-SERVICE
+          predicates:
+            - Path=/currency-exchange/**
 
-#eureka:
-#  client:
-#    service-url:
-#      default-zone: http://localhost:8761/eureka
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      default-zone: http://localhost:8761/eureka
 
 
 #eureka.client.register-with-eureka=true
