@@ -6,6 +6,9 @@ spring:
     name: SPRING-CLOUD-GATEWAY-SERVER
   cloud:
     gateway:
+      discovery:
+        locator:
+          enabled: true
       routes:
         - id: CURRENCY-CONVERSION-SERVICE
           uri: lb://CURRENCY-CONVERSION-SERVICE
