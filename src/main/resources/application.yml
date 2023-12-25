@@ -4,6 +4,8 @@ server:
 spring:
   application:
     name: SPRING-CLOUD-GATEWAY-SERVER
+  config:
+    import: optional:configserver:http://localhost:8888
   cloud:
     gateway:
       discovery:
@@ -19,14 +21,14 @@ spring:
           predicates:
             - Path=/currency-exchange/**
 
-eureka:
-  instance:
-    prefer-ip-address: true
-  client:
-    fetch-registry: true
-    register-with-eureka: true
-    service-url:
-      default-zone: http://localhost:8761/eureka
+#eureka:
+#  instance:
+#    prefer-ip-address: true
+#  client:
+#    fetch-registry: true
+#    register-with-eureka: true
+#    service-url:
+#      default-zone: http://localhost:8761/eureka
 
 
 #eureka.client.register-with-eureka=true
